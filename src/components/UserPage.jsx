@@ -5,7 +5,6 @@ import dice from "../assets/icons8-dice-60.png";
 export const UserPage = ({ user, setUser, setLoggedIn, loggedIn }) => {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [usernameTaken, setUsernameTaken] = useState(false);
 
   useEffect(() => {
     fetchUsers().then(({ users }) => {
@@ -35,6 +34,7 @@ export const UserPage = ({ user, setUser, setLoggedIn, loggedIn }) => {
         errorMessage?.classList.remove("hidden");
       }
     });
+    event.preventDefault();
   };
 
   const logoutHandler = () => {
@@ -61,14 +61,15 @@ export const UserPage = ({ user, setUser, setLoggedIn, loggedIn }) => {
 
     users.map((user) => {
       if (user?.username === username?.value) {
-        setUsernameTaken(true);
-        return errorMessage?.classList.remove("hidden");
-      } else if (users.length === i) {
+        errorMessage?.classList.remove("hidden");
+      } else if (users.length === i && user?.username !== username?.value) {
         addUser(username?.value, name?.value, avatarUrl?.value);
-        return createdMessage?.classList.remove("");
+        errorMessage?.classList.add("hidden");
+        createdMessage?.classList.remove("hidden");
       }
       i++;
     });
+    event.preventDefault();
   };
 
   if (isLoading)
