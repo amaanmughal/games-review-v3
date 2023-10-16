@@ -214,9 +214,9 @@ export const UserPage = ({ user, setUser, setLoggedIn, loggedIn }) => {
       {/*----- Current User Page -----*/}
       <h1 className="current-user-heading">Current User:</h1>
       <div className="current-user-container">
-        <img src={user.avatar_url} />
-        <h2>{user.username}</h2>
-        <h2>{user.name}</h2>
+        <img src={user?.avatar_url} />
+        <h2>{user?.username}</h2>
+        <h2>{user?.name}</h2>
         <button onClick={logoutHandler}>Log out</button>
       </div>
     </main>
