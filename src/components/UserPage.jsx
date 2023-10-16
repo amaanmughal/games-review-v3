@@ -18,8 +18,8 @@ export const UserPage = ({ user, setUser, setLoggedIn, loggedIn }) => {
     const loginForm = document.querySelector("#login");
     const createForm = document.querySelector("#sign-up");
 
-    loginForm.classList.remove("hidden");
-    createForm.classList.add("hidden");
+    loginForm?.classList.remove("hidden");
+    createForm?.classList.add("hidden");
   };
 
   const signInHandler = () => {
@@ -28,11 +28,11 @@ export const UserPage = ({ user, setUser, setLoggedIn, loggedIn }) => {
     const errorMessage = document.querySelector("#incorrect-username-or-name");
 
     users.map((user) => {
-      if (username?.value === user.username && name.value === user.name) {
+      if (username?.value === user?.username && name?.value === user?.name) {
         setUser(user);
         setLoggedIn(true);
       } else {
-        errorMessage.classList.remove("hidden");
+        errorMessage?.classList.remove("hidden");
       }
     });
   };
@@ -46,8 +46,8 @@ export const UserPage = ({ user, setUser, setLoggedIn, loggedIn }) => {
     const loginForm = document.querySelector("#login");
     const createForm = document.querySelector("#sign-up");
 
-    loginForm.classList.add("hidden");
-    createForm.classList.remove("hidden");
+    loginForm?.classList.add("hidden");
+    createForm?.classList.remove("hidden");
   };
 
   const signUpHandler = () => {
@@ -60,12 +60,12 @@ export const UserPage = ({ user, setUser, setLoggedIn, loggedIn }) => {
     const createdMessage = document.querySelector("#account-created");
 
     users.map((user) => {
-      if (user.username === username.value) {
+      if (user?.username === username?.value) {
         setUsernameTaken(true);
-        return errorMessage.classList.remove("hidden");
+        return errorMessage?.classList.remove("hidden");
       } else if (users.length === i) {
-        addUser(username.value, name.value, avatarUrl.value);
-        return createdMessage.classList.remove("");
+        addUser(username?.value, name?.value, avatarUrl?.value);
+        return createdMessage?.classList.remove("");
       }
       i++;
     });
