@@ -28,7 +28,7 @@ export const UserPage = ({ user, setUser, setLoggedIn, loggedIn }) => {
     const errorMessage = document.querySelector("#incorrect-username-or-name");
 
     users.map((user) => {
-      if (username.value === user.username && name.value === user.name) {
+      if (username?.value === user.username && name.value === user.name) {
         setUser(user);
         setLoggedIn(true);
       } else {
