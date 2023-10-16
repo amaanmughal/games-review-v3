@@ -1,0 +1,489 @@
+$color-background-dark: #212121;
+$color-primary: #fe00ff;
+$color-secondary: #40e0d0;
+$color-text-light: #ffffff;
+$color-text-dark: #000000;
+
+$color-card: #898989;
+
+@mixin box-shadow-card {
+  box-shadow: 0 0 20px rgba($color-primary, 0.7);
+}
+
+@mixin comment-section-heading {
+  color: $color-text-dark;
+  font-weight: bold;
+  text-align: left;
+  padding-bottom: 20px;
+}
+
+@mixin button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  background-color: $color-primary;
+  border: solid 1px black;
+  &:hover {
+    background-color: $color-secondary;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+  &:active {
+    background-color: rgb(47, 170, 158);
+    transform: scale(0.98);
+  }
+}
+
+@mixin comment-section-div-template {
+  width: 80%;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  margin: auto;
+}
+
+//-----***** KEY FRAMES *****-----//
+
+@keyframes animateFade {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate3d(0, 0, 1, 0deg);
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+  25% {
+    -webkit-transform: rotate3d(0, 0, 1, 90deg);
+    transform: rotate3d(0, 0, 1, 90deg);
+  }
+  50% {
+    -webkit-transform: rotate3d(0, 0, 1, 180deg);
+    transform: rotate3d(0, 0, 1, 180deg);
+  }
+  75% {
+    -webkit-transform: rotate3d(0, 0, 1, 270deg);
+    transform: rotate3d(0, 0, 1, 270deg);
+  }
+  100% {
+    -webkit-transform: rotate3d(0, 0, 1, 360deg);
+    transform: rotate3d(0, 0, 1, 360deg);
+  }
+}
+
+//-----***** MAIN WEB TEMPLATE *****-----//
+
+*,
+*::after,
+*::before {
+  color: $color-text-light;
+  font-family: Inter;
+  font-weight: 500;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.main-loading {
+  background-color: $color-background-dark;
+  padding-bottom: 40px;
+
+  height: 100vh;
+}
+
+.main-general {
+  background-color: $color-background-dark;
+  padding-bottom: 40px;
+}
+
+//-----***** Loading *****-----//
+
+.dice-loading {
+  animation: rotate 1s infinite;
+}
+
+//-----***** NAV *****-----//
+
+.nav-website-title {
+  display: none;
+  transform: rotate(360deg);
+  transition: 1s;
+}
+
+nav {
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+  background-color: $color-background-dark;
+  height: 80px;
+  align-items: center;
+
+  border-bottom: solid 1px;
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+
+    img {
+      padding-left: 20px;
+      padding-right: 20px;
+      height: 40px;
+    }
+    &:hover {
+      img {
+        transform: rotate(360deg);
+        transition: 1s;
+      }
+      .nav-website-title {
+        display: block;
+        animation: animateFade ease-out 1s;
+      }
+    }
+  }
+
+  .nav-link-button {
+    background-color: #fe00ff;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 100px;
+    padding: 12px 30px;
+    &:hover {
+      background-color: $color-secondary;
+      transition: 0.5s;
+    }
+  }
+}
+
+//-----***** Logo container *****-----//
+
+.logo-main-page-container {
+  padding: 100px 0;
+  width: 100vh;
+  margin: auto;
+  .logo-main-page {
+    .logo-heading {
+      margin-left: 40px;
+      font-size: 63px;
+    }
+    .logo-sub-heading {
+      margin-left: 40px;
+      font-size: 24px;
+      letter-spacing: 3.5px;
+      .number-one-spot-text {
+        color: $color-primary;
+      }
+    }
+    .filter-bar {
+      margin-top: 40px;
+      .filter-label {
+        margin-right: 5px;
+        margin-left: 30px;
+        font-size: 18px;
+      }
+      .filter-option {
+        padding: 3px;
+        color: $color-text-dark;
+      }
+    }
+  }
+}
+
+//-----***** games list container main page *****-----//
+
+.reviews-list-main-page-container {
+  margin: auto;
+  width: 80vw;
+  border-radius: 10px;
+
+  ul {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    list-style: none;
+    justify-items: center;
+
+    li {
+      background-color: $color-card;
+      margin: 20px;
+      border-radius: 10px;
+      padding: 20px;
+      display: inline-grid;
+      gap: 5px;
+      height: 350px;
+
+      @include box-shadow-card;
+
+      &:hover {
+        transform: scale(1.1);
+        transition: 0.2s;
+        box-shadow: 0 0 40px rgba($color-primary, 0.7);
+        background-color: #acacac;
+      }
+
+      img {
+        border-radius: 5px;
+        justify-self: center;
+        width: 100%;
+      }
+      .review-title-main-page {
+        font-weight: bold;
+      }
+      .review-sub-main-page {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.review-votes-container {
+  display: flex;
+  gap: 5px;
+  button {
+    background-color: transparent;
+    border-color: transparent;
+  }
+  .review-votes-arrow {
+    width: 12px;
+    padding: 2px;
+  }
+  .review-votes-up-text {
+    color: rgb(0, 196, 0);
+    font-weight: bold;
+  }
+  .review-votes-down-text {
+    color: red;
+    font-weight: bold;
+  }
+}
+
+//-----***** Single game page *****-----//
+
+.title-single-review {
+  padding-top: 20px;
+}
+
+.img-single-review {
+  width: 40%;
+  border-radius: 20px;
+  margin: 20px 0;
+}
+
+.content-single-review {
+  width: 70%;
+  margin: auto;
+  display: grid;
+  padding-bottom: 40px;
+  gap: 10px;
+  grid-template-columns: 1fr 4fr;
+  .content-label-single-review {
+    text-align: left;
+    color: $color-primary;
+    font-weight: bold;
+  }
+  p {
+    text-align: left;
+  }
+}
+
+//-----***** Single game comments *****-----//
+
+.comment-section-single-page {
+  h4 {
+    @include comment-section-heading;
+  }
+
+  @include comment-section-div-template;
+
+  ul {
+    list-style-type: none;
+    display: grid;
+    gap: 20px;
+    li {
+      padding: 10px;
+      display: grid;
+      grid-template-columns: 1fr 6fr;
+
+      img {
+        width: 50px;
+      }
+      p {
+        color: $color-text-dark;
+        text-align: left;
+      }
+      .author-and-creation-date {
+        display: flex;
+        gap: 10px;
+        .comment-author {
+          font-weight: bold;
+        }
+      }
+      .comment-content {
+        display: grid;
+        gap: 10px;
+      }
+      button {
+        margin-top: 10px;
+        justify-self: center;
+        align-self: center;
+
+        padding: 5px 10px;
+        border-radius: 10px;
+        font-weight: bold;
+        background-color: red;
+        border: solid 1px black;
+        &:hover {
+          cursor: pointer;
+        }
+        &:active {
+          transform: scale(0.98);
+        }
+      }
+    }
+  }
+}
+
+.comment-section-gap {
+  height: 20px;
+}
+
+.create-comment {
+  @include comment-section-div-template;
+  h4 {
+    color: $color-text-dark;
+  }
+
+  .add-comment-heading {
+    @include comment-section-heading;
+  }
+
+  .create-comment-img-and-username {
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    img {
+      width: 50px;
+      align-self: center;
+      justify-self: center;
+    }
+    h4 {
+      align-self: center;
+      justify-self: left;
+      color: $color-text-dark;
+      font-weight: bold;
+    }
+  }
+  .add-comment-box {
+    margin: 20px 0;
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    input {
+      border-radius: 10px;
+      width: 95%;
+      padding: 5px;
+      color: $color-text-dark;
+      text-align: left;
+    }
+    button {
+      @include button;
+    }
+  }
+}
+
+//*****----- User Page -----*****//
+
+.main-login {
+  padding-top: 4rem;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+
+  .form-container {
+    margin: auto;
+    padding: 1rem;
+    width: 400px;
+    @include box-shadow-card;
+    border-radius: 20px;
+    background: $color-card;
+
+    form {
+      .form-title {
+        padding-top: 10px;
+        padding-bottom: 40px;
+      }
+      .form-input {
+        width: 55%;
+        padding: 10px;
+        border-radius: 5px;
+
+        color: $color-text-dark;
+        border: none;
+      }
+      .form-input-username {
+        margin-bottom: 10px;
+      }
+      .form-input-name {
+        margin-bottom: 20px;
+      }
+
+      .form-message-error {
+        color: rgb(255, 0, 0);
+      }
+
+      .form-message-created {
+        color: rgb(0, 196, 0);
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      button {
+        @include button;
+        margin-bottom: 1rem;
+      }
+
+      .form-text,
+      .form-message-error {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+.current-user-page {
+  width: 100%;
+  height: 100vh;
+  background-color: $color-background-dark;
+}
+
+.current-user-heading {
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+
+.current-user-container {
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+  margin: auto;
+  padding: 30px 10px;
+  border-radius: 10px;
+  width: 200px;
+  background-color: $color-card;
+  @include box-shadow-card;
+  img {
+    width: 150px;
+  }
+  button {
+    @include button;
+  }
+}
+
+.hidden {
+  display: none;
+}
